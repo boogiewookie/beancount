@@ -141,9 +141,6 @@ def amounts_map(entry):
     """
     amounts = collections.defaultdict(D)
     for posting in entry.postings:
-        # Skip interpolated postings.
-        if posting.meta and interpolate.AUTOMATIC_META in posting.meta:
-            continue
         currency = isinstance(posting.units, amount.Amount) and posting.units.currency
         if isinstance(currency, str):
             key = (posting.account, currency)
